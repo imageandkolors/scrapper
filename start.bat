@@ -1,0 +1,16 @@
+@echo off
+echo Installing Python dependencies...
+pip install -r requirements.txt
+
+echo Installing Playwright browsers...
+playwright install chromium
+
+echo Installing frontend dependencies...
+cd frontend
+call npm install
+echo Building frontend...
+call npm run build
+cd ..
+
+echo Starting backend server...
+python run.py
